@@ -35,8 +35,10 @@ const Fetchurl=()=>{
 
          <tbody>
              
-             {data.map((value)=>{
-                return(
+        {data.filter(function (value) {
+        return value.age>18;
+        }).map(function (value) {
+        return (
 
                 <tr >
                 <th scope="row">{value.id}</th>
@@ -47,13 +49,16 @@ const Fetchurl=()=>{
                 <td>{value.age}</td>
                 <td>{value.address} </td>
                 </tr>
-                )})}
+                )
+        }
+    )
+}
 
         </tbody>
         </Table>
         </div>
-         );
-        }
+         )
+        };
 export default Fetchurl;
 
         
