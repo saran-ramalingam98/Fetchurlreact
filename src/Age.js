@@ -4,10 +4,10 @@ import {React,useState,useEffect} from 'react';
 import {Table} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const Fetchurl=()=>{
+const Age=()=>{
   
       
-      const[data,setData] = useState([]);
+      const[data,setData] =  useState([]);
       useEffect(() => {
           fetch("https://613476997859e700176a38af.mockapi.io/api/v1/user")
 
@@ -17,9 +17,8 @@ const Fetchurl=()=>{
 
          return(
              <div>
-             <h1 style={{backgroundColor:'red',textAlign:'center'}}>All Data</h1>
+                 <h1 style={{backgroundColor:'red',textAlign:'center'}}>18 plus</h1>
                  <Table bordered>
-                 
 
                  <thead>
           <tr>
@@ -36,8 +35,10 @@ const Fetchurl=()=>{
 
          <tbody>
              
-             {data.map((value)=>{
-                return(
+        {data.filter(function (value) {
+        return value.age>18;
+        }).map(function (value) {
+        return (
 
                 <tr >
                 <th scope="row">{value.id}</th>
@@ -48,19 +49,14 @@ const Fetchurl=()=>{
                 <td>{value.age}</td>
                 <td>{value.address} </td>
                 </tr>
-                )})}
+                )
+        }
+    )
+}
 
         </tbody>
         </Table>
         </div>
-         );
-        }
-export default Fetchurl;
-
-        
-
-
-
-
-
-        
+         )
+        };
+export default Age;        
